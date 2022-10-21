@@ -17,13 +17,13 @@ public class Xojo {
   public Xojo addAttr(final String key, final String value) throws IllegalAccessException {
     this.checkNode(key);
     return new Xojo(
-        this.body.concat(
-            String.format(
-                "[@%s=\"%s\"]",
-                key,
-                value
-            )
+      this.body.concat(
+        String.format(
+          "[@%s=\"%s\"]",
+          key,
+          value
         )
+      )
     );
   }
 
