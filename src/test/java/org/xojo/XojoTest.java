@@ -1,6 +1,5 @@
 package org.xojo;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -26,7 +25,7 @@ class XojoTest {
   }
 
   @Test
-  void addNodeFailsIllegalStateException() {
+  void addNodeThrowsIllegalStateException() {
     assertThrows(IllegalAccessException.class, () -> this.xj.addNode(""));
   }
 
@@ -35,5 +34,17 @@ class XojoTest {
     final Xojo expected = new Xojo("parent[@key=\"value\"]");
     final Xojo actual = this.xj.addAttr("key", "value");
     assertEquals(expected, actual);
+  }
+
+  @Test
+  void addAttrsSuccess() throws IllegalAccessException {
+    final Xojo expected = new Xojo("parent@attrs");
+    final Xojo actual = this.xj.addAttrs("attrs");
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void addAttrsThrowsIllegalStateException() {
+    assertThrows(IllegalAccessException.class, () -> this.xj.addAttrs(""));
   }
 }

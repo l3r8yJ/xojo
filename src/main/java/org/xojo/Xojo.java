@@ -39,6 +39,7 @@ public class Xojo {
 
   @Override
   public boolean equals(final Object obj) {
+    if (null == obj) throw new IllegalArgumentException("Object can't be a null!");
     if (!obj.getClass().equals(Xojo.class)) return false;
     else return Objects.equals(Xojo.class.cast(obj).body, this.body);
   }
