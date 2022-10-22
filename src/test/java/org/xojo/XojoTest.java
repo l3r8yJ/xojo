@@ -37,9 +37,4 @@ class XojoTest {
     final Xojo actual = this.xj.addAttrs(new Node("attrs"));
     assertEquals(expected, actual);
   }
-
-  @Test
-  void addAttrsThrowsIllegalStateException() {
-    assertThrows(IllegalStateException.class, () -> this.xj.addAttrs(new Node("")));
-  }
 }
