@@ -18,33 +18,28 @@ class XojoTest {
   }
 
   @Test
-  void addNodeSuccess() throws IllegalAccessException {
+  void addNodeSuccess() {
     final Xojo expected = new Xojo("parent/child");
-    final Xojo actual = this.xj.addNode(this.child);
+    final Xojo actual = this.xj.addNode(new Node(this.child));
     assertEquals(expected, actual);
   }
 
   @Test
-  void addNodeThrowsIllegalStateException() {
-    assertThrows(IllegalAccessException.class, () -> this.xj.addNode(""));
-  }
-
-  @Test
-  void addAttrSuccess() throws IllegalAccessException {
+  void addAttrSuccess() {
     final Xojo expected = new Xojo("parent[@key=\"value\"]");
-    final Xojo actual = this.xj.addAttr("key", "value");
+    final Xojo actual = this.xj.addAttr(new Attr("key", "value"));
     assertEquals(expected, actual);
   }
 
   @Test
-  void addAttrsSuccess() throws IllegalAccessException {
+  void addAttrsSuccess() {
     final Xojo expected = new Xojo("parent@attrs");
-    final Xojo actual = this.xj.addAttrs("attrs");
+    final Xojo actual = this.xj.addAttrs(new Node("attrs"));
     assertEquals(expected, actual);
   }
 
   @Test
   void addAttrsThrowsIllegalStateException() {
-    assertThrows(IllegalAccessException.class, () -> this.xj.addAttrs(""));
+    assertThrows(IllegalStateException.class, () -> this.xj.addAttrs(new Node("")));
   }
 }
